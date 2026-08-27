@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!--
+	App Groups is a standard capability — any Apple Developer account
+	(including a free/personal one) can add it, unlike
+	`com.apple.developer.payment-pass-provisioning` below, which only Apple
+	grants to a registered card issuer. This is what makes the shared-Keychain
+	half of this project (SharedCardCache) actually testable on a real device
+	today, while the provisioning entitlement remains a hard blocker.
+	-->
+	<key>com.apple.security.application-groups</key>
+	<array>
+		<string>group.kz.demo.bankAppReference</string>
+	</array>
+	<!--
+	NOT enabled — kept here, commented, as a note of what production would add.
+	Adding this key without an Apple-issued grant does not fail at runtime; it
+	fails the *build*, because code signing rejects an entitlement the
+	provisioning profile does not authorize. See FakeDigitalCardSdk.swift for
+	the full explanation.
+
+	<key>com.apple.developer.payment-pass-provisioning</key>
+	<true/>
+	-->
+</dict>
+</plist>

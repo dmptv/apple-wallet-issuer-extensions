@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDisplayName</key>
+	<string>CardAuthUIExtension</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>XPC!</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>NSExtension</key>
+	<dict>
+		<key>NSExtensionPrincipalClass</key>
+		<string>$(PRODUCT_MODULE_NAME).AuthViewController</string>
+		<!--
+		CORRECTED after a real build failure: com.apple.intents-ui-service is
+		the actual SiriKit Intents-UI extension point, and installd validates
+		against its contract — it refused this bundle for missing
+		NSExtensionAttributes.IntentsSupported, which only makes sense for a
+		real Siri Intents UI extension, not this one. IDEMIA's setup guide names
+		the "Intents UI Extension" Xcode *template* only because Xcode has no
+		dedicated template for this extension type; the actual extension point
+		this bundle registers under is the same
+		com.apple.walletkit.extension.issuer-provisioning used by
+		CardStatusExtension — Wallet is expected to tell the UI role apart from
+		the Non-UI role by which PKIssuerProvisioning* protocol the principal
+		class conforms to, not by a distinct extension point. Still
+		documentation, not a header constant — nothing to grep to confirm here.
+		-->
+		<key>NSExtensionPointIdentifier</key>
+		<string>com.apple.walletkit.extension.issuer-provisioning</string>
+	</dict>
+</dict>
+</plist>

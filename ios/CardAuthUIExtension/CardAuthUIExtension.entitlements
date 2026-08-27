@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>com.apple.security.application-groups</key>
+	<array>
+		<string>group.kz.demo.bankAppReference</string>
+	</array>
+	<!--
+	NOT enabled — same reasoning as Runner.entitlements. IDEMIA's setup guide
+	requires this entitlement on the UI extension too, but it is
+	issuer-restricted and would fail code signing on this account.
+
+	<key>com.apple.developer.payment-pass-provisioning</key>
+	<true/>
+	-->
+</dict>
+</plist>
