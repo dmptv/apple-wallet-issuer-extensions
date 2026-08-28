@@ -33,10 +33,9 @@ typedef RefreshTokens = Future<AuthTokens> Function(String refreshToken);
 /// tasks there really can run on different threads.)
 class AuthInterceptor extends Interceptor {
   AuthInterceptor({
-    required TokenStorage storage,
+    required this._storage,
     required RefreshTokens refreshTokens,
-  })  : _storage = storage,
-        _refresh = refreshTokens;
+  })  : _refresh = refreshTokens;
 
   final TokenStorage _storage;
   final RefreshTokens _refresh;

@@ -22,7 +22,7 @@ final getIt = GetIt.instance;
   asExtension: true,
 )
 Future<void> configureDependencies({String? environment}) async {
-  await getIt.init(environment: environment);
+  getIt.init(environment: environment);
 }
 
 /// Environment names used by `@Environment(...)` on registrations.

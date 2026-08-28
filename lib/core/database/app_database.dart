@@ -10,7 +10,7 @@ import 'package:sqflite/sqflite.dart';
 /// point is to be read, visible SQL wins; for a large team shipping daily,
 /// drift's type safety usually wins.
 class AppDatabase {
-  AppDatabase({String databaseName = 'bank_app.db'}) : _databaseName = databaseName;
+  AppDatabase({this._databaseName = 'bank_app.db'});
 
   final String _databaseName;
   Database? _db;

@@ -13,10 +13,9 @@ import '../datasources/card_remote_data_source.dart';
 @LazySingleton(as: CardRepository)
 class CardRepositoryImpl implements CardRepository {
   const CardRepositoryImpl({
-    required CardRemoteDataSource remote,
+    required this._remote,
     required CardLocalDataSource local,
-  })  : _remote = remote,
-        _local = local;
+  })  : _local = local;
 
   final CardRemoteDataSource _remote;
   final CardLocalDataSource _local;
