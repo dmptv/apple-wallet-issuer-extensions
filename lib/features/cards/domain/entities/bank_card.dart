@@ -2,8 +2,9 @@ import 'money.dart';
 
 /// Lifecycle of a card as the issuer sees it.
 ///
-/// Mirrors the states a tokenisation platform reports (IDEMIA's `CardState`
-/// uses the same four), which keeps the mapping at the data boundary trivial.
+/// Mirrors the states a tokenisation platform reports (the card-tokenization
+/// SDK's `CardState` uses the same four), which keeps the mapping at the
+/// data boundary trivial.
 enum CardState { active, inactive, suspended, terminated }
 
 /// A payment card, as the rest of the app understands it.

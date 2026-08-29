@@ -7,7 +7,7 @@
 		<string>group.kz.demo.bankAppReference</string>
 	</array>
 	<!--
-	NOT enabled — same reasoning as Runner.entitlements. IDEMIA's setup guide
+	NOT enabled — same reasoning as Runner.entitlements. The SDK vendor's setup guide
 	requires this entitlement on the UI extension too, but it is
 	issuer-restricted and would fail code signing on this account.
 

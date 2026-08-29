@@ -1,7 +1,7 @@
 import UIKit
 
-/// Mirrors IDEMIA's `SecureCardDisplay` module (see the bank's IDEMIA SDK
-/// technical spec, section 5.2). The real module ships inside
+/// Mirrors the card-tokenization SDK's `SecureCardDisplay` module (see the
+/// bank's SDK spec, section 5.2). The real module ships inside
 /// `DigitalCardSdk.xcframework` as a self-contained unit alongside
 /// `InAppPushProvisioning`; this fake is shipped the same way — as its own
 /// local Swift package — so any target that needs card reveal (Runner today,

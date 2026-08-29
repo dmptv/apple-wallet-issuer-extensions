@@ -55,7 +55,7 @@ private func wrapError(_ error: Any) -> [Any?] {
   ]
 }
 
-enum IdemiaCardApiPigeonInternal {
+enum CardTokenizationApiPigeonInternal {
   static func isNullish(_ value: Any?) -> Bool {
     guard let innerValue = value else {
       return true
@@ -184,7 +184,7 @@ private func nilOrValue<T>(_ value: Any?) -> T? {
 }
 
 
-/// Contract for the IDEMIA Digital Card SDK bridge.
+/// Contract for the card-tokenization SDK bridge.
 ///
 /// ## Why this shape, not a 1:1 mirror of the Swift SDK
 ///
@@ -198,13 +198,13 @@ private func nilOrValue<T>(_ value: Any?) -> T? {
 /// *bank's backend* supplied (certificates, nonce, the signed JWS) and asks for
 /// a plain success/failure. Presenting `PKAddPaymentPassViewController` and
 /// wiring the SDK's handler closure happens entirely inside the native
-/// implementation — see `IdemiaCardBridge.swift`. This is the same principle as
+/// implementation — see `CardTokenizationBridge.swift`. This is the same principle as
 /// `ApiClient` not leaking `DioException`: each layer speaks its own
 /// vocabulary, and the translation lives at the seam, not in the caller.
 ///
-/// GENERATED: `lib/core/native/idemia_card_api.g.dart` and
-/// `ios/Runner/IdemiaCardApi.g.swift` — regenerate with:
-///   dart run pigeon --input pigeons/idemia_card_api.dart
+/// GENERATED: `lib/core/native/card_tokenization_api.g.dart` and
+/// `ios/Runner/CardTokenizationApi.g.swift` — regenerate with:
+///   dart run pigeon --input pigeons/card_tokenization_api.dart
 ///
 /// Generated class from Pigeon that represents data sent in messages.
 struct CardHandleData: Hashable, CustomStringConvertible {
@@ -248,16 +248,16 @@ struct CardHandleData: Hashable, CustomStringConvertible {
     if Swift.type(of: lhs) != Swift.type(of: rhs) {
       return false
     }
-    return IdemiaCardApiPigeonInternal.deepEquals(lhs.cardHandle, rhs.cardHandle) && IdemiaCardApiPigeonInternal.deepEquals(lhs.issuerId, rhs.issuerId) && IdemiaCardApiPigeonInternal.deepEquals(lhs.lastDigits, rhs.lastDigits) && IdemiaCardApiPigeonInternal.deepEquals(lhs.expiry, rhs.expiry) && IdemiaCardApiPigeonInternal.deepEquals(lhs.state, rhs.state)
+    return CardTokenizationApiPigeonInternal.deepEquals(lhs.cardHandle, rhs.cardHandle) && CardTokenizationApiPigeonInternal.deepEquals(lhs.issuerId, rhs.issuerId) && CardTokenizationApiPigeonInternal.deepEquals(lhs.lastDigits, rhs.lastDigits) && CardTokenizationApiPigeonInternal.deepEquals(lhs.expiry, rhs.expiry) && CardTokenizationApiPigeonInternal.deepEquals(lhs.state, rhs.state)
   }
 
   func hash(into hasher: inout Hasher) {
     hasher.combine("CardHandleData")
-    IdemiaCardApiPigeonInternal.deepHash(value: cardHandle, hasher: &hasher)
-    IdemiaCardApiPigeonInternal.deepHash(value: issuerId, hasher: &hasher)
-    IdemiaCardApiPigeonInternal.deepHash(value: lastDigits, hasher: &hasher)
-    IdemiaCardApiPigeonInternal.deepHash(value: expiry, hasher: &hasher)
-    IdemiaCardApiPigeonInternal.deepHash(value: state, hasher: &hasher)
+    CardTokenizationApiPigeonInternal.deepHash(value: cardHandle, hasher: &hasher)
+    CardTokenizationApiPigeonInternal.deepHash(value: issuerId, hasher: &hasher)
+    CardTokenizationApiPigeonInternal.deepHash(value: lastDigits, hasher: &hasher)
+    CardTokenizationApiPigeonInternal.deepHash(value: expiry, hasher: &hasher)
+    CardTokenizationApiPigeonInternal.deepHash(value: state, hasher: &hasher)
   }
 
   public var description: String {
@@ -313,18 +313,18 @@ struct ProvisionableCard: Hashable, CustomStringConvertible {
     if Swift.type(of: lhs) != Swift.type(of: rhs) {
       return false
     }
-    return IdemiaCardApiPigeonInternal.deepEquals(lhs.cardReferenceId, rhs.cardReferenceId) && IdemiaCardApiPigeonInternal.deepEquals(lhs.issuerId, rhs.issuerId) && IdemiaCardApiPigeonInternal.deepEquals(lhs.lastDigits, rhs.lastDigits) && IdemiaCardApiPigeonInternal.deepEquals(lhs.expiry, rhs.expiry) && IdemiaCardApiPigeonInternal.deepEquals(lhs.paymentNetwork, rhs.paymentNetwork) && IdemiaCardApiPigeonInternal.deepEquals(lhs.displayName, rhs.displayName) && IdemiaCardApiPigeonInternal.deepEquals(lhs.eligibilityStatus, rhs.eligibilityStatus)
+    return CardTokenizationApiPigeonInternal.deepEquals(lhs.cardReferenceId, rhs.cardReferenceId) && CardTokenizationApiPigeonInternal.deepEquals(lhs.issuerId, rhs.issuerId) && CardTokenizationApiPigeonInternal.deepEquals(lhs.lastDigits, rhs.lastDigits) && CardTokenizationApiPigeonInternal.deepEquals(lhs.expiry, rhs.expiry) && CardTokenizationApiPigeonInternal.deepEquals(lhs.paymentNetwork, rhs.paymentNetwork) && CardTokenizationApiPigeonInternal.deepEquals(lhs.displayName, rhs.displayName) && CardTokenizationApiPigeonInternal.deepEquals(lhs.eligibilityStatus, rhs.eligibilityStatus)
   }
 
   func hash(into hasher: inout Hasher) {
     hasher.combine("ProvisionableCard")
-    IdemiaCardApiPigeonInternal.deepHash(value: cardReferenceId, hasher: &hasher)
-    IdemiaCardApiPigeonInternal.deepHash(value: issuerId, hasher: &hasher)
-    IdemiaCardApiPigeonInternal.deepHash(value: lastDigits, hasher: &hasher)
-    IdemiaCardApiPigeonInternal.deepHash(value: expiry, hasher: &hasher)
-    IdemiaCardApiPigeonInternal.deepHash(value: paymentNetwork, hasher: &hasher)
-    IdemiaCardApiPigeonInternal.deepHash(value: displayName, hasher: &hasher)
-    IdemiaCardApiPigeonInternal.deepHash(value: eligibilityStatus, hasher: &hasher)
+    CardTokenizationApiPigeonInternal.deepHash(value: cardReferenceId, hasher: &hasher)
+    CardTokenizationApiPigeonInternal.deepHash(value: issuerId, hasher: &hasher)
+    CardTokenizationApiPigeonInternal.deepHash(value: lastDigits, hasher: &hasher)
+    CardTokenizationApiPigeonInternal.deepHash(value: expiry, hasher: &hasher)
+    CardTokenizationApiPigeonInternal.deepHash(value: paymentNetwork, hasher: &hasher)
+    CardTokenizationApiPigeonInternal.deepHash(value: displayName, hasher: &hasher)
+    CardTokenizationApiPigeonInternal.deepHash(value: eligibilityStatus, hasher: &hasher)
   }
 
   public var description: String {
@@ -380,16 +380,16 @@ struct ProvisioningRequest: Hashable, CustomStringConvertible {
     if Swift.type(of: lhs) != Swift.type(of: rhs) {
       return false
     }
-    return IdemiaCardApiPigeonInternal.deepEquals(lhs.cardReferenceId, rhs.cardReferenceId) && IdemiaCardApiPigeonInternal.deepEquals(lhs.certificates, rhs.certificates) && IdemiaCardApiPigeonInternal.deepEquals(lhs.nonce, rhs.nonce) && IdemiaCardApiPigeonInternal.deepEquals(lhs.nonceSignature, rhs.nonceSignature) && IdemiaCardApiPigeonInternal.deepEquals(lhs.userAuthorization, rhs.userAuthorization)
+    return CardTokenizationApiPigeonInternal.deepEquals(lhs.cardReferenceId, rhs.cardReferenceId) && CardTokenizationApiPigeonInternal.deepEquals(lhs.certificates, rhs.certificates) && CardTokenizationApiPigeonInternal.deepEquals(lhs.nonce, rhs.nonce) && CardTokenizationApiPigeonInternal.deepEquals(lhs.nonceSignature, rhs.nonceSignature) && CardTokenizationApiPigeonInternal.deepEquals(lhs.userAuthorization, rhs.userAuthorization)
   }
 
   func hash(into hasher: inout Hasher) {
     hasher.combine("ProvisioningRequest")
-    IdemiaCardApiPigeonInternal.deepHash(value: cardReferenceId, hasher: &hasher)
-    IdemiaCardApiPigeonInternal.deepHash(value: certificates, hasher: &hasher)
-    IdemiaCardApiPigeonInternal.deepHash(value: nonce, hasher: &hasher)
-    IdemiaCardApiPigeonInternal.deepHash(value: nonceSignature, hasher: &hasher)
-    IdemiaCardApiPigeonInternal.deepHash(value: userAuthorization, hasher: &hasher)
+    CardTokenizationApiPigeonInternal.deepHash(value: cardReferenceId, hasher: &hasher)
+    CardTokenizationApiPigeonInternal.deepHash(value: certificates, hasher: &hasher)
+    CardTokenizationApiPigeonInternal.deepHash(value: nonce, hasher: &hasher)
+    CardTokenizationApiPigeonInternal.deepHash(value: nonceSignature, hasher: &hasher)
+    CardTokenizationApiPigeonInternal.deepHash(value: userAuthorization, hasher: &hasher)
   }
 
   public var description: String {
@@ -429,14 +429,14 @@ struct ProvisioningResult: Hashable, CustomStringConvertible {
     if Swift.type(of: lhs) != Swift.type(of: rhs) {
       return false
     }
-    return IdemiaCardApiPigeonInternal.deepEquals(lhs.success, rhs.success) && IdemiaCardApiPigeonInternal.deepEquals(lhs.errorCode, rhs.errorCode) && IdemiaCardApiPigeonInternal.deepEquals(lhs.errorMessage, rhs.errorMessage)
+    return CardTokenizationApiPigeonInternal.deepEquals(lhs.success, rhs.success) && CardTokenizationApiPigeonInternal.deepEquals(lhs.errorCode, rhs.errorCode) && CardTokenizationApiPigeonInternal.deepEquals(lhs.errorMessage, rhs.errorMessage)
   }
 
   func hash(into hasher: inout Hasher) {
     hasher.combine("ProvisioningResult")
-    IdemiaCardApiPigeonInternal.deepHash(value: success, hasher: &hasher)
-    IdemiaCardApiPigeonInternal.deepHash(value: errorCode, hasher: &hasher)
-    IdemiaCardApiPigeonInternal.deepHash(value: errorMessage, hasher: &hasher)
+    CardTokenizationApiPigeonInternal.deepHash(value: success, hasher: &hasher)
+    CardTokenizationApiPigeonInternal.deepHash(value: errorCode, hasher: &hasher)
+    CardTokenizationApiPigeonInternal.deepHash(value: errorMessage, hasher: &hasher)
   }
 
   public var description: String {
@@ -444,7 +444,7 @@ struct ProvisioningResult: Hashable, CustomStringConvertible {
   }
 }
 
-private class IdemiaCardApiPigeonCodecReader: FlutterStandardReader {
+private class CardTokenizationApiPigeonCodecReader: FlutterStandardReader {
   override func readValue(ofType type: UInt8) -> Any? {
     switch type {
     case 129:
@@ -461,7 +461,7 @@ private class IdemiaCardApiPigeonCodecReader: FlutterStandardReader {
   }
 }
 
-private class IdemiaCardApiPigeonCodecWriter: FlutterStandardWriter {
+private class CardTokenizationApiPigeonCodecWriter: FlutterStandardWriter {
   override func writeValue(_ value: Any) {
     if let value = value as? CardHandleData {
       super.writeByte(129)
@@ -481,18 +481,18 @@ private class IdemiaCardApiPigeonCodecWriter: FlutterStandardWriter {
   }
 }
 
-private class IdemiaCardApiPigeonCodecReaderWriter: FlutterStandardReaderWriter {
+private class CardTokenizationApiPigeonCodecReaderWriter: FlutterStandardReaderWriter {
   override func reader(with data: Data) -> FlutterStandardReader {
-    return IdemiaCardApiPigeonCodecReader(data: data)
+    return CardTokenizationApiPigeonCodecReader(data: data)
   }
 
   override func writer(with data: NSMutableData) -> FlutterStandardWriter {
-    return IdemiaCardApiPigeonCodecWriter(data: data)
+    return CardTokenizationApiPigeonCodecWriter(data: data)
   }
 }
 
-class IdemiaCardApiPigeonCodec: FlutterStandardMessageCodec, @unchecked Sendable {
-  static let shared = IdemiaCardApiPigeonCodec(readerWriter: IdemiaCardApiPigeonCodecReaderWriter())
+class CardTokenizationApiPigeonCodec: FlutterStandardMessageCodec, @unchecked Sendable {
+  static let shared = CardTokenizationApiPigeonCodec(readerWriter: CardTokenizationApiPigeonCodecReaderWriter())
 }
 
 
@@ -504,7 +504,7 @@ class IdemiaCardApiPigeonCodec: FlutterStandardMessageCodec, @unchecked Sendable
 /// exactly, since the SDK itself is already async-first).
 ///
 /// Generated protocol from Pigeon that represents a handler of messages from Flutter.
-protocol IdemiaCardHostApi {
+protocol CardTokenizationHostApi {
   func findCardsByCardHolder(cardHolderHandle: String, issuerId: String, completion: @escaping (Result<[CardHandleData], Error>) -> Void)
   func checkCards(issuerId: String, cardHandles: [String], completion: @escaping (Result<[ProvisionableCard], Error>) -> Void)
   /// Synchronous in the real SDK (`canAddCards` has no `async` keyword there)
@@ -521,12 +521,12 @@ protocol IdemiaCardHostApi {
 }
 
 /// Generated setup class from Pigeon to handle messages through the `binaryMessenger`.
-class IdemiaCardHostApiSetup {
-  static var codec: FlutterStandardMessageCodec { IdemiaCardApiPigeonCodec.shared }
-  /// Sets up an instance of `IdemiaCardHostApi` to handle messages through the `binaryMessenger`.
-  static func setUp(binaryMessenger: FlutterBinaryMessenger, api: IdemiaCardHostApi?, messageChannelSuffix: String = "") {
+class CardTokenizationHostApiSetup {
+  static var codec: FlutterStandardMessageCodec { CardTokenizationApiPigeonCodec.shared }
+  /// Sets up an instance of `CardTokenizationHostApi` to handle messages through the `binaryMessenger`.
+  static func setUp(binaryMessenger: FlutterBinaryMessenger, api: CardTokenizationHostApi?, messageChannelSuffix: String = "") {
     let channelSuffix = messageChannelSuffix.count > 0 ? ".\(messageChannelSuffix)" : ""
-    let findCardsByCardHolderChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.bank_app_reference.IdemiaCardHostApi.findCardsByCardHolder\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
+    let findCardsByCardHolderChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.bank_app_reference.CardTokenizationHostApi.findCardsByCardHolder\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
     if let api = api {
       findCardsByCardHolderChannel.setMessageHandler { message, reply in
         let args = message as! [Any?]
@@ -544,7 +544,7 @@ class IdemiaCardHostApiSetup {
     } else {
       findCardsByCardHolderChannel.setMessageHandler(nil)
     }
-    let checkCardsChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.bank_app_reference.IdemiaCardHostApi.checkCards\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
+    let checkCardsChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.bank_app_reference.CardTokenizationHostApi.checkCards\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
     if let api = api {
       checkCardsChannel.setMessageHandler { message, reply in
         let args = message as! [Any?]
@@ -565,7 +565,7 @@ class IdemiaCardHostApiSetup {
     /// Synchronous in the real SDK (`canAddCards` has no `async` keyword there)
     /// because it only reads local PassKit state — no network round trip, so no
     /// reason to force it through the async machinery on either side.
-    let canAddCardsChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.bank_app_reference.IdemiaCardHostApi.canAddCards\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
+    let canAddCardsChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.bank_app_reference.CardTokenizationHostApi.canAddCards\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
     if let api = api {
       canAddCardsChannel.setMessageHandler { message, reply in
         let args = message as! [Any?]
@@ -586,7 +586,7 @@ class IdemiaCardHostApiSetup {
     /// `generatePassKitRequestConfiguration` + `startPushProvisioning` +
     /// `notifyProvisioningCompleted` from the raw SDK, because all three only
     /// make sense chained together on the native side.
-    let startProvisioningChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.bank_app_reference.IdemiaCardHostApi.startProvisioning\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
+    let startProvisioningChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.bank_app_reference.CardTokenizationHostApi.startProvisioning\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
     if let api = api {
       startProvisioningChannel.setMessageHandler { message, reply in
         let args = message as! [Any?]

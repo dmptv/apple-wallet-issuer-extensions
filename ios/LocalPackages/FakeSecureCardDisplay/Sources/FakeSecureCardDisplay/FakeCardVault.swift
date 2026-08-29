@@ -4,7 +4,7 @@ import Foundation
 /// decrypted-on-demand vault.
 ///
 /// Deliberately **not** a database (SQLCipher/GRDB or otherwise). The bank's
-/// IDEMIA spec explicitly forbids persisting card data in
+/// SDK spec explicitly forbids persisting card data in
 /// UserDefaults/CoreData/Keychain (see its "Нефункциональные требования"
 /// section) — any on-device persistent store is extra attack surface once
 /// the device is jailbroken, encrypted-at-rest or not, because the key to

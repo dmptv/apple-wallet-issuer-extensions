@@ -1,7 +1,7 @@
 import 'package:pigeon/pigeon.dart';
 
-/// Contract for the lifecycle of IDEMIA's `CardSecureDisplay` module (see
-/// section 5.2 of the bank's IDEMIA SDK spec).
+/// Contract for the lifecycle of the card-tokenization SDK's `CardSecureDisplay`
+/// module (see section 5.2 of the bank's SDK spec).
 ///
 /// ## Why no method here returns the rendered image
 ///
@@ -18,7 +18,7 @@ import 'package:pigeon/pigeon.dart';
 /// directly and shows the result in a native `UIImageView`. Flutter only
 /// ever asks for the *view* (via `UiKitView`), never the image data — the
 /// same "hand over a native view, not bytes" principle already used for
-/// `PKAddPaymentPassViewController` in `IdemiaCardBridge`.
+/// `PKAddPaymentPassViewController` in `CardTokenizationBridge`.
 ///
 /// This file therefore only covers what genuinely needs Dart-side control:
 /// the module's lifecycle (`initialize`/`wipe`) and the one method whose
@@ -34,7 +34,7 @@ import 'package:pigeon/pigeon.dart';
     swiftOut: 'ios/Runner/SecureCardDisplayApi.g.swift',
     dartPackageName: 'bank_app_reference',
     // See `wallet_extension_simulator_api.dart` for why this is disabled:
-    // `idemia_card_api.dart` already generates the shared `PigeonError`
+    // `card_tokenization_api.dart` already generates the shared `PigeonError`
     // class into the same `Runner` target.
     swiftOptions: SwiftOptions(includeErrorClass: false),
   ),

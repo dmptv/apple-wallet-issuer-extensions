@@ -8,8 +8,8 @@ the app, and the two native Wallet Extensions that let a user add a card
 ## The two provisioning paths
 
 1. **In-app**: the user taps "Add to Apple Wallet" inside the app. The app
-   talks to a card-tokenization SDK (modeled here on IDEMIA's Digital Card
-   SDK) through a Swift bridge, which drives PassKit directly.
+   talks to a card-tokenization SDK through a Swift bridge, which drives
+   PassKit directly.
 2. **From Apple Wallet / Settings, app not running**: iOS launches two
    separate `.appex` targets in their own processes — a Non-UI extension
    that answers "do you have cards to offer?" in under 100ms, and a UI
@@ -21,6 +21,18 @@ A debug screen in the app drives both extension classes directly (they're
 also compiled into the main target) so the logic and the 100ms budget are
 verifiable without the Apple-issued entitlement that real Wallet invocation
 requires.
+
+## Secure card reveal
+
+Shows the full PAN/PIN without either ever existing as Dart-readable text.
+`FakeSecureCardDisplayService` (a local Swift package,
+`ios/LocalPackages/FakeSecureCardDisplay`) renders the fake PAN/PIN into a
+`UIImage` entirely natively; the image is shown through a
+`FlutterPlatformView` embedded via `UiKitView`, so no pixel data crosses the
+Dart↔Swift boundary at all. Pigeon only carries lifecycle calls
+(`initialize`/`wipe`/`copyPanToClipboard`). A Riverpod `NotifierProvider`
+(`isAutoDispose: true`) drives on-screen visibility with a countdown and
+calls `wipe()` on timeout, manual dismiss, and provider disposal alike.
 
 ## Architecture
 
@@ -46,17 +58,18 @@ lib/
 | **dio** | HTTP client | Interceptor chain is what makes the single-flight auth-refresh and the exception-translation boundary (`ErrorInterceptor` → typed `AppException`) possible without scattering `try/catch` across every call site. |
 | **go_router** | Navigation | Declarative routes, nested routing (`/cards/:id`), and URL-addressable screens — the baseline a deep link or push notification needs, which an ad-hoc `Navigator.push` tree doesn't give you. |
 | **sqflite** | Local cache | Chosen over `drift` deliberately: visible, hand-written SQL over a generated ORM, so every query in this reference project is readable without trusting a code generator. Also sidesteps a real `analyzer` version conflict between `drift_dev` and Riverpod 3's tooling. |
-| **pigeon** | Dart ↔ Swift bridge | Generates a typed client/host pair from one Dart schema — the alternative, a hand-written `MethodChannel` with manual `Map<String, dynamic>` (de)serialization on both sides, is exactly where platform-channel bugs live. Two separate schemas (`idemia_card_api.dart`, `wallet_extension_simulator_api.dart`) keep the production bridge and the debug-only harness from ever being confused with each other. |
+| **pigeon** | Dart ↔ Swift bridge | Generates a typed client/host pair from one Dart schema — the alternative, a hand-written `MethodChannel` with manual `Map<String, dynamic>` (de)serialization on both sides, is exactly where platform-channel bugs live. Two separate schemas (`card_tokenization_api.dart`, `wallet_extension_simulator_api.dart`) keep the production bridge and the debug-only harness from ever being confused with each other. |
 | **mocktail** | Test doubles | No code generation, plain Dart mocks/spies — kept deliberately light; this project caps test depth per feature by design (breadth across the platform mattered more here than exhaustive coverage). |
 
 ## Native layer (`ios/`)
 
-- **`Runner/IdemiaCardBridge.swift`** — implements the Pigeon-generated host
+- **`Runner/CardTokenizationBridge.swift`** — implements the Pigeon-generated host
   API, translating between Pigeon's plain data types and the SDK's own
   (`CardHandle`, `Card`, `Eligibility`, …).
-- **`Runner/FakeDigitalCardSdk.swift`** — a local mirror of the real IDEMIA
-  SDK's public surface (types copied from its `.swiftinterface`, not
-  invented), backing a deterministic fake implementation. The real
+- **`Runner/FakeDigitalCardSdk.swift`** — a local mirror of the real
+  card-tokenization SDK's public surface (types copied from its
+  `.swiftinterface`, not invented), backing a deterministic fake
+  implementation. The real
   `.xcframework` needs an Apple-issued issuer entitlement
   (`com.apple.developer.payment-pass-provisioning`) that a personal
   developer account cannot obtain — swapping the fake for the real SDK later
@@ -70,6 +83,9 @@ lib/
 - **`Runner/SharedCardCache.swift`** — the Keychain-backed, App-Group-shared
   cache both extensions and the main app read/write. Compiled into all three
   targets.
+- **`Runner/SecureCardDisplayBridge.swift`** / **`SecureCardDisplayPlatformView.swift`**
+  — the Pigeon host API and the `FlutterPlatformView` for the secure reveal
+  flow, backed by `LocalPackages/FakeSecureCardDisplay`.
 
 ## Getting started
 
@@ -82,6 +98,7 @@ flutter run
 Regenerating the native bridge after editing a `pigeons/*.dart` schema:
 
 ```bash
-dart run pigeon --input pigeons/idemia_card_api.dart
+dart run pigeon --input pigeons/card_tokenization_api.dart
 dart run pigeon --input pigeons/wallet_extension_simulator_api.dart
+dart run pigeon --input pigeons/secure_card_display_api.dart
 ```

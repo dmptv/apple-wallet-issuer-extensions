@@ -63,7 +63,7 @@ class _CardDetailBody extends ConsumerWidget {
           ),
           const SizedBox(height: 24),
           // The full PAN never becomes Dart text anywhere on this screen —
-          // see `SecureCardDisplayView` and `IdemiaCardBridge` notes for why.
+          // see `SecureCardDisplayView` and `CardTokenizationBridge` notes for why.
           if (reveal.isVisible) ...[
             SizedBox(
               height: 60,

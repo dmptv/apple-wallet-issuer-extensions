@@ -169,7 +169,7 @@ private func nilOrValue<T>(_ value: Any?) -> T? {
 /// A debug-only channel to the Wallet Extension's logic, called directly by
 /// our own UI instead of by the real Apple Wallet.
 ///
-/// This is intentionally a **separate** Pigeon file from `idemia_card_api.dart`:
+/// This is intentionally a **separate** Pigeon file from `card_tokenization_api.dart`:
 /// that one describes production API surface (what the app calls to talk to
 /// the SDK); this one describes a test harness that will not exist once real
 /// device testing with the issuer entitlement is possible. Keeping them apart

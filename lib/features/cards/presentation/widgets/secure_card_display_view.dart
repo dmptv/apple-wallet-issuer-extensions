@@ -21,7 +21,7 @@ class SecureCardDisplayView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Android has no counterpart in this project yet — the whole IDEMIA
+    // Android has no counterpart in this project yet — the whole SDK
     // integration is iOS-only so far (see `project_apple_wallet_provisioning`
     // memory). Guarding here keeps the failure a clear, deliberate "not
     // built for this platform" rather than a channel-not-found crash.

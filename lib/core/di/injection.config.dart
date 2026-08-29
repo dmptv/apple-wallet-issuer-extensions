@@ -26,7 +26,7 @@ import '../../features/cards/domain/usecases/watch_cards.dart' as _i226;
 import '../../features/wallet/data/wallet_provisioning_repository.dart'
     as _i1023;
 import '../database/app_database.dart' as _i982;
-import '../native/idemia_card_api.g.dart' as _i959;
+import '../native/card_tokenization_api.g.dart' as _i618;
 import '../native/secure_card_display_api.g.dart' as _i337;
 import '../network/api_client.dart' as _i557;
 import '../network/token_storage.dart' as _i964;
@@ -46,8 +46,8 @@ extension GetItInjectableX on _i174.GetIt {
     final registerModule = _$RegisterModule();
     gh.lazySingleton<_i982.AppDatabase>(() => registerModule.database);
     gh.lazySingleton<_i964.TokenStorage>(() => registerModule.tokenStorage);
-    gh.lazySingleton<_i959.IdemiaCardHostApi>(
-      () => registerModule.idemiaCardHostApi(),
+    gh.lazySingleton<_i618.CardTokenizationHostApi>(
+      () => registerModule.cardTokenizationHostApi(),
     );
     gh.lazySingleton<_i337.SecureCardDisplayHostApi>(
       () => registerModule.secureCardDisplayHostApi(),
@@ -64,15 +64,15 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i890.CardLocalDataSource>(
       () => _i890.CardLocalDataSourceImpl(gh<_i982.AppDatabase>()),
     );
+    gh.lazySingleton<_i1023.WalletProvisioningRepository>(
+      () => _i1023.WalletProvisioningRepositoryImpl(
+        gh<_i618.CardTokenizationHostApi>(),
+      ),
+    );
     gh.factory<String>(
       () => registerModule.prodBaseUrl,
       instanceName: 'baseUrl',
       registerFor: {_prod},
-    );
-    gh.lazySingleton<_i1023.WalletProvisioningRepository>(
-      () => _i1023.WalletProvisioningRepositoryImpl(
-        gh<_i959.IdemiaCardHostApi>(),
-      ),
     );
     gh.lazySingleton<_i361.Dio>(
       () => registerModule.dio(

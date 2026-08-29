@@ -27,7 +27,7 @@
 		the actual SiriKit Intents-UI extension point, and installd validates
 		against its contract — it refused this bundle for missing
 		NSExtensionAttributes.IntentsSupported, which only makes sense for a
-		real Siri Intents UI extension, not this one. IDEMIA's setup guide names
+		real Siri Intents UI extension, not this one. The SDK vendor's setup guide names
 		the "Intents UI Extension" Xcode *template* only because Xcode has no
 		dedicated template for this extension type; the actual extension point
 		this bundle registers under is the same

@@ -3,7 +3,7 @@ import 'package:pigeon/pigeon.dart';
 /// A debug-only channel to the Wallet Extension's logic, called directly by
 /// our own UI instead of by the real Apple Wallet.
 ///
-/// This is intentionally a **separate** Pigeon file from `idemia_card_api.dart`:
+/// This is intentionally a **separate** Pigeon file from `card_tokenization_api.dart`:
 /// that one describes production API surface (what the app calls to talk to
 /// the SDK); this one describes a test harness that will not exist once real
 /// device testing with the issuer entitlement is possible. Keeping them apart
@@ -16,7 +16,7 @@ import 'package:pigeon/pigeon.dart';
     dartPackageName: 'bank_app_reference',
     // `PigeonError` is generated fresh, at file (not namespaced) scope, by
     // every Pigeon input — fine when each `.g.swift` lands in its own target,
-    // but `idemia_card_api.dart` already generated one into the same `Runner`
+    // but `card_tokenization_api.dart` already generated one into the same `Runner`
     // target. Disabling it here and letting the other file's copy be the only
     // one is exactly the documented escape hatch for "another generated Swift
     // file in the same directory."

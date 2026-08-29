@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
 import '../database/app_database.dart';
-import '../native/idemia_card_api.g.dart';
+import '../native/card_tokenization_api.g.dart';
 import '../native/secure_card_display_api.g.dart';
 import '../network/api_client.dart';
 import '../network/auth_interceptor.dart';
@@ -73,11 +73,12 @@ abstract class RegisterModule {
   @lazySingleton
   ApiClient apiClient(Dio dio) => ApiClient(dio);
 
-  /// The Pigeon-generated client for the native IDEMIA bridge. No `Dio`, no
-  /// interceptors — this Future crosses a `MethodChannel` to `ios/Runner`, not
-  /// the network, so none of the HTTP-layer plumbing above applies to it.
+  /// The Pigeon-generated client for the native card-tokenization bridge. No
+  /// `Dio`, no interceptors — this Future crosses a `MethodChannel` to
+  /// `ios/Runner`, not the network, so none of the HTTP-layer plumbing above
+  /// applies to it.
   @lazySingleton
-  IdemiaCardHostApi idemiaCardHostApi() => IdemiaCardHostApi();
+  CardTokenizationHostApi cardTokenizationHostApi() => CardTokenizationHostApi();
 
   @lazySingleton
   SecureCardDisplayHostApi secureCardDisplayHostApi() => SecureCardDisplayHostApi();

@@ -1,6 +1,6 @@
 import 'package:pigeon/pigeon.dart';
 
-/// Contract for the IDEMIA Digital Card SDK bridge.
+/// Contract for the card-tokenization SDK bridge.
 ///
 /// ## Why this shape, not a 1:1 mirror of the Swift SDK
 ///
@@ -14,17 +14,17 @@ import 'package:pigeon/pigeon.dart';
 /// *bank's backend* supplied (certificates, nonce, the signed JWS) and asks for
 /// a plain success/failure. Presenting `PKAddPaymentPassViewController` and
 /// wiring the SDK's handler closure happens entirely inside the native
-/// implementation — see `IdemiaCardBridge.swift`. This is the same principle as
+/// implementation — see `CardTokenizationBridge.swift`. This is the same principle as
 /// `ApiClient` not leaking `DioException`: each layer speaks its own
 /// vocabulary, and the translation lives at the seam, not in the caller.
 ///
-/// GENERATED: `lib/core/native/idemia_card_api.g.dart` and
-/// `ios/Runner/IdemiaCardApi.g.swift` — regenerate with:
-///   dart run pigeon --input pigeons/idemia_card_api.dart
+/// GENERATED: `lib/core/native/card_tokenization_api.g.dart` and
+/// `ios/Runner/CardTokenizationApi.g.swift` — regenerate with:
+///   dart run pigeon --input pigeons/card_tokenization_api.dart
 @ConfigurePigeon(
   PigeonOptions(
-    dartOut: 'lib/core/native/idemia_card_api.g.dart',
-    swiftOut: 'ios/Runner/IdemiaCardApi.g.swift',
+    dartOut: 'lib/core/native/card_tokenization_api.g.dart',
+    swiftOut: 'ios/Runner/CardTokenizationApi.g.swift',
     dartOptions: DartOptions(),
     swiftOptions: SwiftOptions(),
     dartPackageName: 'bank_app_reference',
@@ -120,7 +120,7 @@ class ProvisioningResult {
 /// handlers (or `async`/`await`, matching the SDK's own signatures almost
 /// exactly, since the SDK itself is already async-first).
 @HostApi()
-abstract class IdemiaCardHostApi {
+abstract class CardTokenizationHostApi {
   @async
   List<CardHandleData> findCardsByCardHolder({
     required String cardHolderHandle,

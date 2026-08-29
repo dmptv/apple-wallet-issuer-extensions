@@ -16,9 +16,9 @@
 		481EC614620B1546EFC097A5 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EE0FD8EBE2D69D4344081E /* ServiceProvider.swift */; };
 		4B0EFACC49335B10E8B52CD9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7900170FF48B9E8C515DC27D /* Foundation.framework */; };
 		4E5E97E2751D7794568908A1 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EE0FD8EBE2D69D4344081E /* ServiceProvider.swift */; };
-		51856793816D22AB511A275B /* IdemiaCardApi.g.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAB65D81D33C5650FEF82C6 /* IdemiaCardApi.g.swift */; };
+		51856793816D22AB511A275B /* CardTokenizationApi.g.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAB65D81D33C5650FEF82C6 /* CardTokenizationApi.g.swift */; };
 		5D776B85BF80C6E8101F5ED5 /* ExtensionSimulatorBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900B1E600C2CFF1D1E22869A /* ExtensionSimulatorBridge.swift */; };
-		62A10BA709EDB89B9DC7AA7D /* IdemiaCardBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A1AB0073F8259FB7322F74 /* IdemiaCardBridge.swift */; };
+		62A10BA709EDB89B9DC7AA7D /* CardTokenizationBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A1AB0073F8259FB7322F74 /* CardTokenizationBridge.swift */; };
 		672E2D4D255A678A15DDA997 /* SecureCardDisplayBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B932BA9E396841AF348C633 /* SecureCardDisplayBridge.swift */; };
 		6C21250EFB24CA52A5533EA6 /* CardStatusExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0B4BB4DA2D0A957323F12F00 /* CardStatusExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6FD217B119A742EB842A30E2 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D30AE0CADAE1799B625A652 /* AuthViewController.swift */; };
@@ -92,7 +92,7 @@
 		11D5F69B6F903E4AE40CDCE6 /* CardAuthUIExtension.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = CardAuthUIExtension.entitlements; sourceTree = "<group>"; };
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
-		1DAB65D81D33C5650FEF82C6 /* IdemiaCardApi.g.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdemiaCardApi.g.swift; sourceTree = "<group>"; };
+		1DAB65D81D33C5650FEF82C6 /* CardTokenizationApi.g.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTokenizationApi.g.swift; sourceTree = "<group>"; };
 		27D87F472EB05C387A9039F4 /* SecureCardDisplayApi.g.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SecureCardDisplayApi.g.swift; sourceTree = "<group>"; };
 		2C30C9167AA8FF66689464FE /* FakeDigitalCardSdk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeDigitalCardSdk.swift; sourceTree = "<group>"; };
 		331C807B294A618700263BE5 /* RunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerTests.swift; sourceTree = "<group>"; };
@@ -106,7 +106,7 @@
 		78E0A7A72DC9AD7400C4905E /* FlutterGeneratedPluginSwiftPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = FlutterGeneratedPluginSwiftPackage; path = Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage; sourceTree = "<group>"; };
 		7900170FF48B9E8C515DC27D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
-		80A1AB0073F8259FB7322F74 /* IdemiaCardBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdemiaCardBridge.swift; sourceTree = "<group>"; };
+		80A1AB0073F8259FB7322F74 /* CardTokenizationBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTokenizationBridge.swift; sourceTree = "<group>"; };
 		900B1E600C2CFF1D1E22869A /* ExtensionSimulatorBridge.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExtensionSimulatorBridge.swift; sourceTree = "<group>"; };
 		9740EEB21CF90195004384FC /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Flutter/Debug.xcconfig; sourceTree = "<group>"; };
 		9740EEB31CF90195004384FC /* Generated.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Generated.xcconfig; path = Flutter/Generated.xcconfig; sourceTree = "<group>"; };
@@ -219,8 +219,8 @@
 				1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */,
 				74858FAE1ED2DC5600515810 /* AppDelegate.swift */,
 				2C30C9167AA8FF66689464FE /* FakeDigitalCardSdk.swift */,
-				80A1AB0073F8259FB7322F74 /* IdemiaCardBridge.swift */,
-				1DAB65D81D33C5650FEF82C6 /* IdemiaCardApi.g.swift */,
+				80A1AB0073F8259FB7322F74 /* CardTokenizationBridge.swift */,
+				1DAB65D81D33C5650FEF82C6 /* CardTokenizationApi.g.swift */,
 				7884E8672EC3CC0400C636F2 /* SceneDelegate.swift */,
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
 				F711DC0EEC0F936CA3DB6D0C /* SharedCardCache.swift */,
@@ -470,8 +470,8 @@
 			files = (
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
 				446B85BE600C5D88799D9283 /* FakeDigitalCardSdk.swift in Sources */,
-				62A10BA709EDB89B9DC7AA7D /* IdemiaCardBridge.swift in Sources */,
-				51856793816D22AB511A275B /* IdemiaCardApi.g.swift in Sources */,
+				62A10BA709EDB89B9DC7AA7D /* CardTokenizationBridge.swift in Sources */,
+				51856793816D22AB511A275B /* CardTokenizationApi.g.swift in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
 				7884E8682EC3CC0700C636F2 /* SceneDelegate.swift in Sources */,
 				EDB41A099217AF716855A8B9 /* SharedCardCache.swift in Sources */,

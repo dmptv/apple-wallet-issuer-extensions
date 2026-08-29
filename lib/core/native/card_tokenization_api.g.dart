@@ -97,7 +97,7 @@ int _deepHash(Object? value) {
 }
 
 
-/// Contract for the IDEMIA Digital Card SDK bridge.
+/// Contract for the card-tokenization SDK bridge.
 ///
 /// ## Why this shape, not a 1:1 mirror of the Swift SDK
 ///
@@ -111,13 +111,13 @@ int _deepHash(Object? value) {
 /// *bank's backend* supplied (certificates, nonce, the signed JWS) and asks for
 /// a plain success/failure. Presenting `PKAddPaymentPassViewController` and
 /// wiring the SDK's handler closure happens entirely inside the native
-/// implementation — see `IdemiaCardBridge.swift`. This is the same principle as
+/// implementation — see `CardTokenizationBridge.swift`. This is the same principle as
 /// `ApiClient` not leaking `DioException`: each layer speaks its own
 /// vocabulary, and the translation lives at the seam, not in the caller.
 ///
-/// GENERATED: `lib/core/native/idemia_card_api.g.dart` and
-/// `ios/Runner/IdemiaCardApi.g.swift` — regenerate with:
-///   dart run pigeon --input pigeons/idemia_card_api.dart
+/// GENERATED: `lib/core/native/card_tokenization_api.g.dart` and
+/// `ios/Runner/CardTokenizationApi.g.swift` — regenerate with:
+///   dart run pigeon --input pigeons/card_tokenization_api.dart
 class CardHandleData {
   CardHandleData({
     required this.cardHandle,
@@ -443,11 +443,11 @@ class _PigeonCodec extends StandardMessageCodec {
 /// `Future`-returning Dart method backed by a Swift method using completion
 /// handlers (or `async`/`await`, matching the SDK's own signatures almost
 /// exactly, since the SDK itself is already async-first).
-class IdemiaCardHostApi {
-  /// Constructor for [IdemiaCardHostApi]. The [binaryMessenger] named argument is
+class CardTokenizationHostApi {
+  /// Constructor for [CardTokenizationHostApi]. The [binaryMessenger] named argument is
   /// available for dependency injection. If it is left null, the default
   /// BinaryMessenger will be used which routes to the host platform.
-  IdemiaCardHostApi({BinaryMessenger? binaryMessenger, String messageChannelSuffix = ''})
+  CardTokenizationHostApi({BinaryMessenger? binaryMessenger, String messageChannelSuffix = ''})
       : pigeonVar_binaryMessenger = binaryMessenger,
         pigeonVar_messageChannelSuffix = messageChannelSuffix.isNotEmpty ? '.$messageChannelSuffix' : '';
   final BinaryMessenger? pigeonVar_binaryMessenger;
@@ -457,7 +457,7 @@ class IdemiaCardHostApi {
   final String pigeonVar_messageChannelSuffix;
 
   Future<List<CardHandleData>> findCardsByCardHolder({required String cardHolderHandle, required String issuerId}) async {
-    final pigeonVar_channelName = 'dev.flutter.pigeon.bank_app_reference.IdemiaCardHostApi.findCardsByCardHolder$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channelName = 'dev.flutter.pigeon.bank_app_reference.CardTokenizationHostApi.findCardsByCardHolder$pigeonVar_messageChannelSuffix';
     final pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,
@@ -476,7 +476,7 @@ class IdemiaCardHostApi {
   }
 
   Future<List<ProvisionableCard>> checkCards({required String issuerId, required List<String> cardHandles}) async {
-    final pigeonVar_channelName = 'dev.flutter.pigeon.bank_app_reference.IdemiaCardHostApi.checkCards$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channelName = 'dev.flutter.pigeon.bank_app_reference.CardTokenizationHostApi.checkCards$pigeonVar_messageChannelSuffix';
     final pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,
@@ -498,7 +498,7 @@ class IdemiaCardHostApi {
   /// because it only reads local PassKit state — no network round trip, so no
   /// reason to force it through the async machinery on either side.
   Future<Map<String, String>> canAddCards({required List<String> lastDigits}) async {
-    final pigeonVar_channelName = 'dev.flutter.pigeon.bank_app_reference.IdemiaCardHostApi.canAddCards$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channelName = 'dev.flutter.pigeon.bank_app_reference.CardTokenizationHostApi.canAddCards$pigeonVar_messageChannelSuffix';
     final pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,
@@ -523,7 +523,7 @@ class IdemiaCardHostApi {
   /// `notifyProvisioningCompleted` from the raw SDK, because all three only
   /// make sense chained together on the native side.
   Future<ProvisioningResult> startProvisioning(ProvisioningRequest request) async {
-    final pigeonVar_channelName = 'dev.flutter.pigeon.bank_app_reference.IdemiaCardHostApi.startProvisioning$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channelName = 'dev.flutter.pigeon.bank_app_reference.CardTokenizationHostApi.startProvisioning$pigeonVar_messageChannelSuffix';
     final pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,

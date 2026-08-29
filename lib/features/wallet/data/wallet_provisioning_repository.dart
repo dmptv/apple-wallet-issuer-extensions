@@ -6,10 +6,10 @@ import 'package:injectable/injectable.dart';
 // `hide` keeps only the Pigeon plumbing this file needs and leaves the
 // domain-layer `ProvisionableCard` from the other import unambiguous, without
 // resorting to an `as` prefix on every reference.
-import '../../../core/native/idemia_card_api.g.dart' hide ProvisionableCard;
+import '../../../core/native/card_tokenization_api.g.dart' hide ProvisionableCard;
 import '../domain/entities/provisionable_card.dart';
 
-/// The domain-facing contract. Notice it never mentions Pigeon, IDEMIA, or
+/// The domain-facing contract. Notice it never mentions Pigeon, the SDK, or
 /// PassKit by name in its signatures — same inversion as `CardRepository`:
 /// the presentation layer depends on this interface, not on the generated API.
 abstract interface class WalletProvisioningRepository {
@@ -28,13 +28,13 @@ abstract interface class WalletProvisioningRepository {
 /// Talks to the generated Pigeon client directly.
 ///
 /// This is the one class in the whole `wallet` feature allowed to import
-/// `idemia_card_api.g.dart` — the same containment rule as `ApiClient` being
-/// the only place that imports `dio`.
+/// `card_tokenization_api.g.dart` — the same containment rule as `ApiClient`
+/// being the only place that imports `dio`.
 @LazySingleton(as: WalletProvisioningRepository)
 class WalletProvisioningRepositoryImpl implements WalletProvisioningRepository {
   WalletProvisioningRepositoryImpl(this._hostApi);
 
-  final IdemiaCardHostApi _hostApi;
+  final CardTokenizationHostApi _hostApi;
 
   @override
   Future<List<ProvisionableCard>> checkEligibleCards({

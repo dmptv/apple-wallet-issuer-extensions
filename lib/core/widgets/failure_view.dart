@@ -70,7 +70,7 @@ class FailureView extends StatelessWidget {
     );
   }
 
-  /// The mapping from Appendix A of the IDEMIA spec is exactly this shape:
+  /// The mapping from Appendix A of the SDK spec is exactly this shape:
   /// server-defined code in, user-safe copy out, one entry per code.
   static String _businessMessage(String code) => switch (code) {
         'CARD_EXPIRED' => 'This card has expired. Please reissue it.',

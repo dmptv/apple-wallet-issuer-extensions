@@ -8,7 +8,7 @@ import 'wallet_provider.dart';
 
 /// Exercises the full chain end to end:
 /// button tap → Notifier → Repository → generated Pigeon client
-///   → MethodChannel → IdemiaCardBridge.swift → FakeDigitalCardSdk → back
+///   → MethodChannel → CardTokenizationBridge.swift → FakeDigitalCardSdk → back
 ///   → SharedCardCache (Keychain).
 ///
 /// The load is triggered by an explicit button, not `initState`, on purpose:
@@ -43,7 +43,7 @@ class WalletScreen extends ConsumerWidget {
             padding: const EdgeInsets.all(16),
             child: FilledButton.icon(
               // Step 1 of the manual demo: fetches cards from the native
-              // bridge and — as a side effect inside `IdemiaCardBridge.checkCards`
+              // bridge and — as a side effect inside `CardTokenizationBridge.checkCards`
               // — writes their summaries into `SharedCardCache` (Keychain,
               // shared via the App Group with `CardStatusExtension`). Nothing
               // downstream of this tap is visible in the UI; the only way to

@@ -2,7 +2,7 @@ import Flutter
 import PassKit
 import UIKit
 
-/// Implements the Pigeon-generated `IdemiaCardHostApi` protocol by calling
+/// Implements the Pigeon-generated `CardTokenizationHostApi` protocol by calling
 /// `DigitalCardSDK` (currently `FakeDigitalCardSdk.swift` — see that file for
 /// why, and for exactly what changes when the real `.xcframework` is linked).
 ///
@@ -11,9 +11,9 @@ import UIKit
 /// swapping the fake for the real SDK a one-file change: everything on the
 /// Dart side already speaks Pigeon's vocabulary (`CardHandleData`,
 /// `ProvisionableCard`, …), never the SDK's.
-final class IdemiaCardBridge: IdemiaCardHostApi {
+final class CardTokenizationBridge: CardTokenizationHostApi {
 
-  // MARK: - IdemiaCardHostApi
+  // MARK: - CardTokenizationHostApi
 
   func findCardsByCardHolder(
     cardHolderHandle: String,

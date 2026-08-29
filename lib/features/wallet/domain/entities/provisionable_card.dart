@@ -3,7 +3,7 @@
 /// A separate entity from `BankCard` (the balance-list card) on purpose: this
 /// one exists only in the provisioning flow's vocabulary — `cardHandle`,
 /// `eligibilityStatus` — fields `BankCard` has no business knowing about.
-/// Merging them would leak IDEMIA-specific concepts into the card-list feature
+/// Merging them would leak SDK-specific concepts into the card-list feature
 /// that has nothing to do with Apple Wallet.
 enum WalletEligibility {
   eligible,

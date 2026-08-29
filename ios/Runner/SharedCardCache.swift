@@ -46,7 +46,7 @@ enum SharedCardCache {
   }
 
   /// Called by the main app whenever the eligible-card list is refreshed —
-  /// see `IdemiaCardBridge.checkCards`, which writes here after every
+  /// see `CardTokenizationBridge.checkCards`, which writes here after every
   /// successful call.
   static func write(cards: [CardSummary]) {
     let summary = Summary(cards: cards, cachedAt: Date())

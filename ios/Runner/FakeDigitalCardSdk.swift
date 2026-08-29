@@ -15,7 +15,7 @@ import PassKit
 /// 1.5.6) and backs it with hardcoded, deterministic responses. The type
 /// names, method signatures, and enum cases below are not invented — they are
 /// copied from the real module. That is what makes the swap-in trivial later:
-/// only this file changes, `IdemiaCardBridge.swift` never learns the
+/// only this file changes, `CardTokenizationBridge.swift` never learns the
 /// difference.
 enum CardState: String, Codable, Equatable {
   case NOT_ACTIVE
