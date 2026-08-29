@@ -14,8 +14,8 @@ import '../datasources/card_remote_data_source.dart';
 class CardRepositoryImpl implements CardRepository {
   const CardRepositoryImpl({
     required this._remote,
-    required CardLocalDataSource local,
-  })  : _local = local;
+    required this._local,
+  });
 
   final CardRemoteDataSource _remote;
   final CardLocalDataSource _local;

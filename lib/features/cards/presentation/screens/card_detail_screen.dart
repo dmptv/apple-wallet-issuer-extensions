@@ -5,6 +5,8 @@ import '../../../../core/error/failures.dart';
 import '../../../../core/widgets/failure_view.dart';
 import '../../domain/entities/bank_card.dart';
 import '../providers/card_detail_providers.dart';
+import '../providers/card_reveal_provider.dart';
+import '../widgets/secure_card_display_view.dart';
 
 /// Reached either by tapping a [CardTile] or, cold-start, straight from a
 /// notification deep link — `context.push('/cards/$id')` with nothing else in
@@ -35,17 +37,15 @@ class CardDetailScreen extends ConsumerWidget {
   }
 }
 
-class _CardDetailBody extends StatelessWidget {
+class _CardDetailBody extends ConsumerWidget {
   const _CardDetailBody({required this.card});
 
   final BankCard card;
 
   @override
-  Widget build(BuildContext context) {
-    // Deliberately minimal: the PAN/CVV/PIN view is not this screen. That data
-    // is rendered by CardSecureDisplay's own UIImage output (see the IDEMIA
-    // integration notes) precisely so a full PAN never exists as text
-    // anywhere Flutter — or a screenshot — could capture it.
+  Widget build(BuildContext context, WidgetRef ref) {
+    final reveal = ref.watch(cardRevealProvider);
+
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -61,6 +61,30 @@ class _CardDetailBody extends StatelessWidget {
             card.balance.format(),
             style: Theme.of(context).textTheme.headlineMedium,
           ),
+          const SizedBox(height: 24),
+          // The full PAN never becomes Dart text anywhere on this screen —
+          // see `SecureCardDisplayView` and `IdemiaCardBridge` notes for why.
+          if (reveal.isVisible) ...[
+            SizedBox(
+              height: 60,
+              child: SecureCardDisplayView(cardReferenceId: card.id),
+            ),
+            const SizedBox(height: 8),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Hides in ${reveal.remainingSeconds}s'),
+                TextButton(
+                  onPressed: () => ref.read(cardRevealProvider.notifier).hide(),
+                  child: const Text('Hide'),
+                ),
+              ],
+            ),
+          ] else
+            OutlinedButton(
+              onPressed: () => ref.read(cardRevealProvider.notifier).reveal(),
+              child: const Text('Show full card number'),
+            ),
         ],
       ),
     );

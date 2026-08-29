@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		08740645D5807F1E49DA9CEA /* SharedCardCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F711DC0EEC0F936CA3DB6D0C /* SharedCardCache.swift */; };
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
+		1B054241C3920AEA01D68CDE /* SecureCardDisplayApi.g.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D87F472EB05C387A9039F4 /* SecureCardDisplayApi.g.swift */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		446B85BE600C5D88799D9283 /* FakeDigitalCardSdk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C30C9167AA8FF66689464FE /* FakeDigitalCardSdk.swift */; };
@@ -18,15 +19,18 @@
 		51856793816D22AB511A275B /* IdemiaCardApi.g.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAB65D81D33C5650FEF82C6 /* IdemiaCardApi.g.swift */; };
 		5D776B85BF80C6E8101F5ED5 /* ExtensionSimulatorBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900B1E600C2CFF1D1E22869A /* ExtensionSimulatorBridge.swift */; };
 		62A10BA709EDB89B9DC7AA7D /* IdemiaCardBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A1AB0073F8259FB7322F74 /* IdemiaCardBridge.swift */; };
+		672E2D4D255A678A15DDA997 /* SecureCardDisplayBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B932BA9E396841AF348C633 /* SecureCardDisplayBridge.swift */; };
 		6C21250EFB24CA52A5533EA6 /* CardStatusExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0B4BB4DA2D0A957323F12F00 /* CardStatusExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6FD217B119A742EB842A30E2 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D30AE0CADAE1799B625A652 /* AuthViewController.swift */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		7884E8682EC3CC0700C636F2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7884E8672EC3CC0400C636F2 /* SceneDelegate.swift */; };
 		78A318202AECB46A00862997 /* FlutterGeneratedPluginSwiftPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 78A3181F2AECB46A00862997 /* FlutterGeneratedPluginSwiftPackage */; };
 		8BA09B134F1A88C4D507D61B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7900170FF48B9E8C515DC27D /* Foundation.framework */; };
+		9547FAF8C694B0F473D8CDA7 /* SecureCardDisplayPlatformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42FEC98C54E93F3EA6E92DE /* SecureCardDisplayPlatformView.swift */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
+		9C2872E5B095B0892A76D257 /* FakeSecureCardDisplay in Frameworks */ = {isa = PBXBuildFile; productRef = 80EA889B0B3B9761619DB29C /* FakeSecureCardDisplay */; };
 		D5DDB1DB36D7FC8C19C46EBF /* CardAuthUIExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CB85527D1A5A295A3E4A27FC /* CardAuthUIExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E18C29D157C4DE2566212158 /* WalletExtensionSimulatorApi.g.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C79B9F7DA921A5AEF04C46 /* WalletExtensionSimulatorApi.g.swift */; };
 		EDB41A099217AF716855A8B9 /* SharedCardCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F711DC0EEC0F936CA3DB6D0C /* SharedCardCache.swift */; };
@@ -89,10 +93,12 @@
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
 		1DAB65D81D33C5650FEF82C6 /* IdemiaCardApi.g.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdemiaCardApi.g.swift; sourceTree = "<group>"; };
+		27D87F472EB05C387A9039F4 /* SecureCardDisplayApi.g.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SecureCardDisplayApi.g.swift; sourceTree = "<group>"; };
 		2C30C9167AA8FF66689464FE /* FakeDigitalCardSdk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeDigitalCardSdk.swift; sourceTree = "<group>"; };
 		331C807B294A618700263BE5 /* RunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerTests.swift; sourceTree = "<group>"; };
 		331C8081294A63A400263BE5 /* RunnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
+		3B932BA9E396841AF348C633 /* SecureCardDisplayBridge.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SecureCardDisplayBridge.swift; sourceTree = "<group>"; };
 		3D30AE0CADAE1799B625A652 /* AuthViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +118,7 @@
 		A2EE0FD8EBE2D69D4344081E /* ServiceProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
 		C9C79B9F7DA921A5AEF04C46 /* WalletExtensionSimulatorApi.g.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WalletExtensionSimulatorApi.g.swift; sourceTree = "<group>"; };
 		CB85527D1A5A295A3E4A27FC /* CardAuthUIExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CardAuthUIExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E42FEC98C54E93F3EA6E92DE /* SecureCardDisplayPlatformView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SecureCardDisplayPlatformView.swift; sourceTree = "<group>"; };
 		F340144EA6E5E961265BF6D7 /* CardStatusExtension.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = CardStatusExtension.entitlements; sourceTree = "<group>"; };
 		F711DC0EEC0F936CA3DB6D0C /* SharedCardCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SharedCardCache.swift; sourceTree = "<group>"; };
 		FF0EB06769659737529B5EA0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -131,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78A318202AECB46A00862997 /* FlutterGeneratedPluginSwiftPackage in Frameworks */,
+				9C2872E5B095B0892A76D257 /* FakeSecureCardDisplay in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +226,9 @@
 				F711DC0EEC0F936CA3DB6D0C /* SharedCardCache.swift */,
 				900B1E600C2CFF1D1E22869A /* ExtensionSimulatorBridge.swift */,
 				C9C79B9F7DA921A5AEF04C46 /* WalletExtensionSimulatorApi.g.swift */,
+				3B932BA9E396841AF348C633 /* SecureCardDisplayBridge.swift */,
+				E42FEC98C54E93F3EA6E92DE /* SecureCardDisplayPlatformView.swift */,
+				27D87F472EB05C387A9039F4 /* SecureCardDisplayApi.g.swift */,
 			);
 			path = Runner;
 			sourceTree = "<group>";
@@ -324,6 +335,7 @@
 			name = Runner;
 			packageProductDependencies = (
 				78A3181F2AECB46A00862997 /* FlutterGeneratedPluginSwiftPackage */,
+				80EA889B0B3B9761619DB29C /* FakeSecureCardDisplay */,
 			);
 			productName = Runner;
 			productReference = 97C146EE1CF9000F007C117D /* Runner.app */;
@@ -360,6 +372,7 @@
 			mainGroup = 97C146E51CF9000F007C117D;
 			packageReferences = (
 				781AD8BC2B33823900A9FFBB /* XCLocalSwiftPackageReference "FlutterGeneratedPluginSwiftPackage" */,
+				CDEACB3221DE38568D1DC505 /* XCLocalSwiftPackageReference "FakeSecureCardDisplay" */,
 			);
 			productRefGroup = 97C146EF1CF9000F007C117D /* Products */;
 			projectDirPath = "";
@@ -466,6 +479,9 @@
 				5D776B85BF80C6E8101F5ED5 /* ExtensionSimulatorBridge.swift in Sources */,
 				E18C29D157C4DE2566212158 /* WalletExtensionSimulatorApi.g.swift in Sources */,
 				F9F0652273048AC7E912BEEA /* AuthViewController.swift in Sources */,
+				672E2D4D255A678A15DDA997 /* SecureCardDisplayBridge.swift in Sources */,
+				9547FAF8C694B0F473D8CDA7 /* SecureCardDisplayPlatformView.swift in Sources */,
+				1B054241C3920AEA01D68CDE /* SecureCardDisplayApi.g.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -980,12 +996,21 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage;
 		};
+		CDEACB3221DE38568D1DC505 /* XCLocalSwiftPackageReference "FakeSecureCardDisplay" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = LocalPackages/FakeSecureCardDisplay;
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		78A3181F2AECB46A00862997 /* FlutterGeneratedPluginSwiftPackage */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FlutterGeneratedPluginSwiftPackage;
+		};
+		80EA889B0B3B9761619DB29C /* FakeSecureCardDisplay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CDEACB3221DE38568D1DC505 /* XCLocalSwiftPackageReference "FakeSecureCardDisplay" */;
+			productName = FakeSecureCardDisplay;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

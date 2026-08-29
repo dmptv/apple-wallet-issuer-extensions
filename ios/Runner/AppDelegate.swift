@@ -20,5 +20,11 @@ import UIKit
     let messenger = engineBridge.applicationRegistrar.messenger()
     IdemiaCardHostApiSetup.setUp(binaryMessenger: messenger, api: IdemiaCardBridge())
     WalletExtensionSimulatorHostApiSetup.setUp(binaryMessenger: messenger, api: ExtensionSimulatorBridge())
+    SecureCardDisplayHostApiSetup.setUp(binaryMessenger: messenger, api: SecureCardDisplayBridge())
+
+    engineBridge.applicationRegistrar.register(
+      SecureCardDisplayPlatformViewFactory(),
+      withId: "secure_card_display_view"
+    )
   }
 }

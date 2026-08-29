@@ -27,6 +27,7 @@ import '../../features/wallet/data/wallet_provisioning_repository.dart'
     as _i1023;
 import '../database/app_database.dart' as _i982;
 import '../native/idemia_card_api.g.dart' as _i959;
+import '../native/secure_card_display_api.g.dart' as _i337;
 import '../network/api_client.dart' as _i557;
 import '../network/token_storage.dart' as _i964;
 import 'register_module.dart' as _i291;
@@ -47,6 +48,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i964.TokenStorage>(() => registerModule.tokenStorage);
     gh.lazySingleton<_i959.IdemiaCardHostApi>(
       () => registerModule.idemiaCardHostApi(),
+    );
+    gh.lazySingleton<_i337.SecureCardDisplayHostApi>(
+      () => registerModule.secureCardDisplayHostApi(),
     );
     gh.factory<String>(
       () => registerModule.devBaseUrl,
