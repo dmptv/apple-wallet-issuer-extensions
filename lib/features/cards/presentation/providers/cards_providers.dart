@@ -1,8 +1,10 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/di/injection.dart';
 import '../../domain/entities/bank_card.dart';
 import '../../domain/usecases/watch_cards.dart';
+
+part 'cards_providers.g.dart';
 
 /// Bridge from the get_it graph into Riverpod.
 ///
@@ -23,21 +25,17 @@ import '../../domain/usecases/watch_cards.dart';
 ///
 /// The seam below is what makes it testable: override this one provider and
 /// the entire data layer is replaced, without get_it ever being touched.
-final watchCardsProvider = Provider<WatchCards>((ref) => getIt<WatchCards>());
+@riverpod
+WatchCards watchCards(Ref ref) => getIt<WatchCards>();
 
 /// The card list, as the UI consumes it.
 ///
-/// `isAutoDispose: true` because this state belongs to a screen. Left alive
-/// (the Riverpod default), a background refresh would keep running after the
-/// user navigated away — the exact leak shape that shows up as battery drain
-/// and phantom network traffic.
-final cardsProvider =
-    StreamNotifierProvider<CardsNotifier, List<BankCard>>(
-  CardsNotifier.new,
-  isAutoDispose: true,
-);
-
-class CardsNotifier extends StreamNotifier<List<BankCard>> {
+/// `@riverpod class` generates an `autoDispose` provider by default — this
+/// state belongs to a screen, so a background refresh must not keep running
+/// after the user navigates away. Opting into `keepAlive: true` would be the
+/// escape hatch if that were ever wrong here; it isn't.
+@riverpod
+class Cards extends _$Cards {
   /// Runs on first listen. Riverpod wraps the stream in `AsyncValue`
   /// automatically: `loading` until the first event, then `data`, and `error`
   /// if the stream throws — so no manual state juggling is needed here.

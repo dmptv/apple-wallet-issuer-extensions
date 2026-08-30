@@ -1,26 +1,15 @@
 import 'dart:async';
 
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/di/injection.dart';
 import '../../../../core/native/secure_card_display_api.g.dart';
 
-final secureCardDisplayHostApiProvider =
-    Provider<SecureCardDisplayHostApi>((ref) => getIt<SecureCardDisplayHostApi>());
+part 'card_reveal_provider.g.dart';
 
-/// Whether the native secure-display view for a given card should be on
-/// screen right now, plus the auto-hide countdown.
-///
-/// `autoDispose` matters here more than anywhere else in the app: this
-/// state gates whether a `UIImageView` holding a decrypted PAN/PIN image
-/// exists at all. If a stale provider survived after the reveal screen
-/// closed, the image (and the native `wipe()` call) would never happen —
-/// exactly the "screen closed but the SDK still thinks it's initialized"
-/// bug the reveal flow exists to prevent.
-final cardRevealProvider = NotifierProvider<CardRevealNotifier, CardRevealState>(
-  CardRevealNotifier.new,
-  isAutoDispose: true,
-);
+@riverpod
+SecureCardDisplayHostApi secureCardDisplayHostApi(Ref ref) =>
+    getIt<SecureCardDisplayHostApi>();
 
 class CardRevealState {
   const CardRevealState({this.isVisible = false, this.remainingSeconds = 0});
@@ -34,7 +23,17 @@ class CardRevealState {
       );
 }
 
-class CardRevealNotifier extends Notifier<CardRevealState> {
+/// Whether the native secure-display view for a given card should be on
+/// screen right now, plus the auto-hide countdown.
+///
+/// `@riverpod class` is `autoDispose` by default, which matters here more
+/// than anywhere else in the app: this state gates whether a `UIImageView`
+/// holding a decrypted PAN/PIN image exists at all. If a stale provider
+/// survived after the reveal screen closed, the image (and the native
+/// `wipe()` call) would never happen — exactly the "screen closed but the SDK
+/// still thinks it's initialized" bug the reveal flow exists to prevent.
+@riverpod
+class CardReveal extends _$CardReveal {
   static const _revealDuration = Duration(seconds: 15);
 
   Timer? _countdown;

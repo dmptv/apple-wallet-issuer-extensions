@@ -1,17 +1,20 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../core/di/injection.dart';
 import '../data/wallet_provisioning_repository.dart';
 import '../domain/entities/provisionable_card.dart';
 
-final walletRepositoryProvider =
-    Provider<WalletProvisioningRepository>((ref) => getIt<WalletProvisioningRepository>());
+part 'wallet_provider.g.dart';
+
+@riverpod
+WalletProvisioningRepository walletRepository(Ref ref) =>
+    getIt<WalletProvisioningRepository>();
 
 /// State for the "add to Apple Wallet" screen: the list of eligible cards,
 /// plus which one (if any) is mid-provisioning.
 ///
-/// `Notifier<T>`, not `AsyncNotifier<T>`: `state` here is not "the async
-/// result of one operation" but a small hand-rolled state machine with two
+/// A hand-rolled state class, not `AsyncValue`: `state` here is not "the
+/// async result of one operation" but a small state machine with two
 /// independent axes (the list, and a per-card "is this one provisioning right
 /// now" flag). `AsyncValue` only models one axis well, so forcing this into it
 /// would mean stuffing the in-flight card id into the `data` payload — a
@@ -51,12 +54,8 @@ class WalletState {
   }
 }
 
-final walletProvider = NotifierProvider<WalletNotifier, WalletState>(
-  WalletNotifier.new,
-  isAutoDispose: true,
-);
-
-class WalletNotifier extends Notifier<WalletState> {
+@riverpod
+class Wallet extends _$Wallet {
   @override
   WalletState build() => const WalletState();
 
@@ -78,8 +77,8 @@ class WalletNotifier extends Notifier<WalletState> {
     }
   }
 
-  /// Re-entrancy guard, same shape as `CardsNotifier.refresh`: a double-tap on
-  /// the same card (or a tap while a previous one is still finishing) must not
+  /// Re-entrancy guard, same shape as `Cards.refresh`: a double-tap on the
+  /// same card (or a tap while a previous one is still finishing) must not
   /// start a second native `startProvisioning` call — PassKit does not queue
   /// concurrent add-card flows, it would either crash or present a second
   /// modal on top of the first.
